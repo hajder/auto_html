@@ -10,12 +10,14 @@ AutoHtml.add_filter(:youtube).with(:width => 420, :height => 315, :frameborder =
     autoplay = options[:autoplay]
     hide_related = options[:hide_related]
     api = options[:api]
+    controls = options[:controls]
     src = "//www.youtube.com/embed/#{youtube_id}"
     params = []
     params << "wmode=#{wmode}" if wmode
     params << "autoplay=1" if autoplay
     params << "rel=0" if hide_related
     params << "enablejsapi=1" if api
+    params << "controls=#{controls}" if controls
     src += "?#{params.join '&'}" unless params.empty?
     %{<div class="video youtube"><iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" id="#{id}" allowfullscreen></iframe></div>}
   end
